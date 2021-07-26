@@ -1,0 +1,26 @@
+name: Run Tests
+
+defaults:
+  run:
+    shell: bash
+
+on:
+  push:
+    branches:
+      - master
+      - '[Oo][Ll]-[0-9]+-**'
+  pull_request:
+    branches:
+      - master
+      - '[Oo][Ll]-[0-9]+-**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true    
+    - run: ruby -v
+
